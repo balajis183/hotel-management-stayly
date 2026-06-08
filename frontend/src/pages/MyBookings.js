@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import { downloadBookingTicket } from "../services/ticketService";
 import "../styles/MyBookings.css";
 
 function MyBookings() {
@@ -58,6 +59,7 @@ function MyBookings() {
                   <th>Check-in</th>
                   <th>Check-out</th>
                   <th>Status</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -75,6 +77,17 @@ function MyBookings() {
                       >
                         {booking.bookingStatus}
                       </span>
+                    </td>
+                    <td>
+                      <button
+                        className="action-btn download-btn"
+                        onClick={() =>
+                          downloadBookingTicket(booking, booking.room)
+                        }
+                        title="Download booking ticket"
+                      >
+                        📥 Download Ticket
+                      </button>
                     </td>
                   </tr>
                 ))}
