@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://laxmi-hospitality-services-backend.onrender.com/api",
+  baseURL: "https://hotel-management-stayly-backend.onrender.com/api",
 });
 
 // Attach JWT token to every request if available
