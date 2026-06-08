@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RoomDetails from "./pages/RoomDetails";
+import BookingConfirmation from "./pages/BookingConfirmation";
 import MyBookings from "./pages/MyBookings";
 import AdminDashboard from "./pages/AdminDashboard";
 import ManageRooms from "./pages/ManageRooms";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/rooms/:id" element={<RoomDetails />} />
+          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
 
           <Route
             path="/my-bookings"

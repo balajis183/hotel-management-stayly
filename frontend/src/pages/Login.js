@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import api from "../services/api";
 import { saveAuth, isAdmin } from "../services/auth";
 import "../styles/Auth.css";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(location.state?.message || "");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -40,6 +42,7 @@ function Login() {
         <h2 className="auth-title">Welcome Back</h2>
         <p className="auth-subtitle">Login to your Stayly account</p>
 
+        {success && <div className="auth-success">{success}</div>}
         {error && <div className="auth-error">{error}</div>}
 
         <form onSubmit={handleSubmit} className="auth-form">

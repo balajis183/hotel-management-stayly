@@ -40,9 +40,9 @@ function Register() {
     setLoading(true);
 
     try {
-      const res = await api.post("/auth/register", form);
-      saveAuth(res.data.token, res.data.user);
-      navigate("/");
+      await api.post("/auth/register", form);
+      // Redirect to login page with success message
+      navigate("/login", { state: { message: "Registration successful! Please log in." } });
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed. Try again.");
     } finally {

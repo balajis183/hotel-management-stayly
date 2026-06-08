@@ -54,14 +54,18 @@ function RoomDetails() {
 
     setSubmitting(true);
     try {
-      await api.post("/bookings", {
+      const res = await api.post("/bookings", {
         room: id,
         checkInDate,
         checkOutDate,
       });
-      setBookingMessage("Booking created successfully! Status: Pending.");
-      setCheckInDate("");
-      setCheckOutDate("");
+      // Redirect to booking confirmation page with booking details
+      navigate("/booking-confirmation", { 
+        state: { 
+          booking: res.data,
+          room: room
+        } 
+      });
     } catch (err) {
       setBookingError(
         err.response?.data?.message || "Booking failed. Please try again."
